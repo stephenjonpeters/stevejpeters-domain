@@ -9,7 +9,7 @@ Use Cloudflare's GitHub integration (Workers & Pages): every `git push` to `main
 | **Cloudflare Workers & Pages** (recommended) | Cloudflare pulls from your GitHub repo and serves the site from its own network | Your domain already lives on Cloudflare — fewest moving parts, preview URLs per branch |
 | **GitHub Pages + Cloudflare DNS** | GitHub hosts the files; Cloudflare DNS points your domain at GitHub | You already use GitHub Pages or want everything visible on GitHub |
 
-This guide uses the domain `stevejpeters.org`. Replace `your-username` with your GitHub username.
+This guide uses the domain `stevejpeters.org` and the GitHub account `stephenjonpeters`.
 
 **Reference docs:** [Cloudflare Pages docs](https://developers.cloudflare.com/pages/) · [GitHub Pages docs](https://docs.github.com/en/pages)
 
@@ -61,7 +61,7 @@ gh repo create my-site --public --source=. --push
 Or without it: on [github.com/new](https://github.com/new) create a repository, leave it empty (no README), then run:
 
 ```bash
-git remote add origin https://github.com/your-username/my-site.git
+git remote add origin https://github.com/stephenjonpeters/my-site.git
 git push -u origin main
 ```
 
@@ -85,7 +85,7 @@ Cloudflare builds and deploys the site on every push once the repo is linked.
 | Build command | leave empty | e.g. `npm run build` |
 | Output / build directory | `/` (or the folder holding `index.html`) | e.g. `dist` or `public` |
 
-5. Click **Save and Deploy**. After a minute you get a live URL such as `my-site.pages.dev` or `my-site.your-username.workers.dev` — open it to confirm the page loads.
+5. Click **Save and Deploy**. After a minute you get a live URL such as `my-site.pages.dev` or `my-site.stephenjonpeters.workers.dev` — open it to confirm the page loads.
 
 If the dashboard offers a framework preset, pick it; it fills in the command and folder for you.
 
@@ -122,7 +122,7 @@ Here GitHub serves the files and Cloudflare only points the domain at GitHub. Sk
 | A | `@` | `185.199.109.153` | DNS only |
 | A | `@` | `185.199.110.153` | DNS only |
 | A | `@` | `185.199.111.153` | DNS only |
-| CNAME | `www` | `your-username.github.io` | DNS only |
+| CNAME | `www` | `stephenjonpeters.github.io` | DNS only |
 
    Confirm the current IP addresses in GitHub's [apex domain instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain).
 
