@@ -9,7 +9,7 @@ Use Cloudflare's GitHub integration (Workers & Pages): every `git push` to `main
 | **Cloudflare Workers & Pages** (recommended) | Cloudflare pulls from your GitHub repo and serves the site from its own network | Your domain already lives on Cloudflare — fewest moving parts, preview URLs per branch |
 | **GitHub Pages + Cloudflare DNS** | GitHub hosts the files; Cloudflare DNS points your domain at GitHub | You already use GitHub Pages or want everything visible on GitHub |
 
-Throughout this guide, replace `yourdomain.com` with your actual domain and `your-username` with your GitHub username.
+This guide uses the domain `stevejpeters.org`. Replace `your-username` with your GitHub username.
 
 **Reference docs:** [Cloudflare Pages docs](https://developers.cloudflare.com/pages/) · [GitHub Pages docs](https://docs.github.com/en/pages)
 
@@ -96,14 +96,14 @@ If the dashboard offers a framework preset, pick it; it fills in the command and
 Because the domain is already on Cloudflare, it creates the DNS records and the HTTPS certificate for you.
 
 1. Open your new project → **Settings** → **Domains & Routes** (Pages: the **Custom domains** tab).
-2. Click **Add** → **Custom domain**, enter `yourdomain.com`, and confirm.
-3. Repeat for `www.yourdomain.com`.
+2. Click **Add** → **Custom domain**, enter `stevejpeters.org`, and confirm.
+3. Repeat for `www.stevejpeters.org`.
 4. Wait for each domain to show **Active** — usually 1–5 minutes.
-5. Visit `https://yourdomain.com` and `https://www.yourdomain.com`.
+5. Visit `https://stevejpeters.org` and `https://www.stevejpeters.org`.
 
 To send `www` to the bare domain (or the reverse), add a redirect: your domain → **Rules** → **Redirect Rules** → template **Redirect from WWW to root**.
 
-If an existing A, AAAA or CNAME record already uses `yourdomain.com` or `www` (for example a parking page), delete it under **DNS → Records** first, or the custom domain step will fail.
+If an existing A, AAAA or CNAME record already uses `stevejpeters.org` or `www` (for example a parking page), delete it under **DNS → Records** first, or the custom domain step will fail.
 
 ## Alternative: GitHub Pages with Cloudflare DNS
 
@@ -113,7 +113,7 @@ If an existing A, AAAA or CNAME record already uses `yourdomain.com` or `www` (f
 Here GitHub serves the files and Cloudflare only points the domain at GitHub. Skip Steps 2–3 if you use this.
 
 1. In the GitHub repo: **Settings** → **Pages** → Source **Deploy from a branch** → branch `main`, folder `/ (root)` → **Save**.
-2. On the same page, set **Custom domain** to `yourdomain.com` and save. GitHub commits a `CNAME` file to the repo — keep it.
+2. On the same page, set **Custom domain** to `stevejpeters.org` and save. GitHub commits a `CNAME` file to the repo — keep it.
 3. In Cloudflare → **DNS** → **Records**, add:
 
 | Type | Name | Content | Proxy |
