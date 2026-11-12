@@ -105,6 +105,39 @@ To send `www` to the bare domain (or the reverse), add a redirect: your domain �
 
 If an existing A, AAAA or CNAME record already uses `stevejpeters.org` or `www` (for example a parking page), delete it under **DNS → Records** first, or the custom domain step will fail.
 
+## Publishing more projects on the same domain
+
+> **Links** — Cloudflare: [Pages custom domains](https://developers.cloudflare.com/pages/configuration/custom-domains/) · [Pages limits](https://developers.cloudflare.com/pages/platform/limits/) · [Workers pricing & free limits](https://developers.cloudflare.com/workers/platform/pricing/)
+
+Give each technical project its own repo and Cloudflare project, served from a subdomain. Projects deploy independently, and one broken build never takes down the others.
+
+| Project | GitHub repo | Cloudflare project | Address |
+| --- | --- | --- | --- |
+| Homepage / portfolio | `stephenjonpeters/my-site` | `my-site` | `stevejpeters.org` |
+| A demo app | `stephenjonpeters/demo-app` | `demo-app` | `demo.stevejpeters.org` |
+| Project docs | `stephenjonpeters/project-docs` | `project-docs` | `docs.stevejpeters.org` |
+
+For each new project, repeat Steps 1–3 with a new repo, and in Step 3 enter the subdomain (for example `demo.stevejpeters.org`) instead of the bare domain. Cloudflare creates the DNS record and certificate for the subdomain automatically. Then link each project from your homepage.
+
+On the free plan, Pages gives unlimited static requests and bandwidth but caps the number of builds per month. Check the limits page above if you deploy many times a day.
+
+## Choosing a free host
+
+Static sites (HTML, docs, portfolios, frontend apps built with Vite, Astro or Hugo) work on all of these. Free tiers change often, so confirm current limits on each provider's pricing page.
+
+| Service | Best for | Notes |
+| --- | --- | --- |
+| **Cloudflare Workers & Pages** (this guide) | Static sites and frontend apps on a Cloudflare domain | Unlimited static bandwidth, preview URL per branch, private repos fine |
+| **GitHub Pages** (see the alternative below) | Simple static sites and docs | Static only; public repo needed on a free plan |
+| **Vercel** | Next.js / React apps | Free Hobby plan is for non-commercial use only |
+| **Netlify** | Static sites with forms or functions | Monthly bandwidth and build-minute caps |
+
+If a project needs a backend:
+
+- **Cloudflare Workers** for APIs, plus **D1** (SQL), **KV** (key-value) or **R2** (file storage). All have free tiers and deploy from GitHub the same way as Step 2.
+- **Render**, **Fly.io** or **Railway** for full servers or containers. Free tiers are limited; some sleep when idle or require a card on file.
+- **Supabase** or **Neon** for a free managed Postgres database.
+
 ## Alternative: GitHub Pages with Cloudflare DNS
 
 > **Links** — GitHub: [Configure a publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) · [Manage a custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site) · [Secure your site with HTTPS](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https) · [Verify your domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages)
